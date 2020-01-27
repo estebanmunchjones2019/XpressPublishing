@@ -71,6 +71,7 @@ XPress.getArtists = () => {
       return new Promise(resolve => resolve([]));
     }
     return response.json().then(jsonResponse => {
+      console.log(jsonResponse.artists);
       return jsonResponse.artists.map(artist => camelcaseKeys(artist));
     });
   });

@@ -6,14 +6,21 @@ const express = require('express');
 const apiRouter = require('./api/api');
 
 const app = express();
-const PORT = process.env.PORT || 4001;
+const PORT = process.env.PORT || 4000;
+
+//it's important to follow a specific order of app.use
+app.use(express.static('./'));
+app.use(bodyParser.json());
+app.use(cors());
+app.use(morgan('dev'));
 
 app.use('/api',apiRouter);
 
-app.use(bodyParser.json(),cors(),morgan('dev'));
-if (process.env.NODE_ENV === 'development') {
+
+
+if (process.env.NODE_ENV === 'development') { // the errorhandler middleware should be the last middleware on the list. The order matters!
     // only use in development
-    app.use(errorhandler())
+    app.use(errorhandler());
   }
 
 app.listen(PORT,()=>{
