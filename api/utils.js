@@ -8,4 +8,12 @@ const checkArtist = (req,res,next)=>{
     next();
 }
 
-module.exports = {checkArtist};
+const checkSeries = (req,res,next)=>{
+    const newSeries = req.body.series;
+    if(!newSeries.name || !newSeries.description){
+        res.sendStatus(400); // bad request
+    }
+    next();
+}
+
+module.exports = {checkArtist, checkSeries};

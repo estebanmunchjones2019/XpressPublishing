@@ -9,7 +9,7 @@ const db = new sqlite3.Database( process.env.TEST_DATABASE || './database.sqlite
 
 
 artistsRouter.param(':artistId',(req,res,next,artistId)=>{
-    const artist = db.get(`SELECT * FROM Artist WHERE id = $artistId`,{ $artistId: artistId },(err,row)=>{
+    db.get(`SELECT * FROM Artist WHERE id = $artistId`,{ $artistId: artistId },(err,row)=>{
         if(err){
             next(err);
         }else if(!row){
