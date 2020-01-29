@@ -10,25 +10,27 @@ const db = new sqlite3.Database( process.env.TEST_DATABASE || './database.sqlite
 
 
 seriesRouter.param('seriesId',(req,res,next,seriesId)=>{ // seriesRouter.param should be above the rest of the route handlers
-    db.get(`SELECT * FROM Series WHERE id = $seriesId`,{ $seriesId: seriesId },(err,row)=>{
+    db.get(`SELECT * FROM Series WHERE id = $seriesId`,{ $seriesId: seriesId },(err,series)=>{
         if(err){
             next(err);
-        }else if(!row){
-            return res.sendStatus(404);
+        }else if(series){
+            req.series = series;
+            next(); 
+        } else {
+            res.sendStatus(404);
         }
-        req.series = row;
-        next(); 
     })
 });
 
 seriesRouter.use('/:seriesId/issues',issuesRouter);
 
 seriesRouter.get('/',(req,res,next)=>{
-    db.all(`SELECT * FROM Series`, (err,rows)=>{
+    db.all(`SELECT * FROM Series`, (err,series)=>{
         if(err){
             next(err);
+        } else {
+            res.status(200).send({ series: series });
         }
-        res.status(200).send({ series: rows});
     })
 });
 
@@ -37,37 +39,56 @@ seriesRouter.get('/:seriesId',(req,res,next)=>{
 });
 
 seriesRouter.post('/',checkSeries, (req,res,next)=>{
-    const newSeries = req.body.series;
-    db.run(`INSERT INTO Series (name, description) VALUES ($name, $description)`,{ $name: newSeries.name, $description: newSeries.description}, function(err){
+    const name = req.body.series.name;
+    const description = req.body.series.description;
+    const sql = `INSERT INTO Series (
+        name, description) 
+        VALUES (
+        $name, $description)`;
+    const values = {
+        $name: name, $description: description
+    };
+    db.run(sql, values, function(err){
         if(err){
             next(err);
+        } else {
+            db.get(`SELECT * FROM Series WHERE id = ${this.lastID}`,(err,series)=>{
+                if(err){
+                    next(err);
+                } else {
+                    res.status(201).send( { series: series });
+                }
+            })
         }
-        db.get(`SELECT * FROM Series WHERE id = ${this.lastID}`,(err,row)=>{
-            if(err){
-                next(err);
-            }
-            res.status(201).send( { series: row });
-        })
     })
 });
 
 seriesRouter.put('/:seriesId', checkSeries, (req,res,next)=>{
-    const newSeries = req.body.series;
-    db.run(`UPDATE Series SET name = $name, description = $description WHERE id = $id`,{ $name: newSeries.name, $description: newSeries.description, $id: req.series.id}, function(err){
+    const name = req.body.series.name;
+    const description = req.body.series.description;
+    const sql = `UPDATE Series SET name = $name, description = $description WHERE id = $id`;
+    const values = { $name: name, $description:description, $id: req.series.id}
+    db.run(sql, values, function(err){
         if(err){
             next(err);
+        } else {
+            db.get(`SELECT * FROM Series WHERE id = ${req.series.id}`,(err,series)=>{
+                if(err){
+                    next(err);
+                } else {
+                    res.status(200).send( { series: series });
+                }
+            })
         }
-        db.get(`SELECT * FROM Series WHERE id = ${req.series.id}`,(err,row)=>{
-            if(err){
-                next(err);
-            }
-            res.status(200).send( { series: row });
-        })
     })
 });
 
 seriesRouter.delete('/:seriesId', checkIssue2,(req,res,next)=>{
-    db.run(`DELETE FROM Series WHERE id = ${req.series.id}`, function(err){
+    const sql = `DELETE FROM Series WHERE id = $id`;
+    const value = {
+        $id: req.series.id
+    };
+    db.run(sql, value, function(err){
         if(err){
             next(err);
         }else{

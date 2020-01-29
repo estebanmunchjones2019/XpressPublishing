@@ -145,7 +145,7 @@ issuesRouter.param('issueId',(req,res,next,issueId)=>{
             next(err);
         }else if(row){
             req.issue = row;
-            next();        
+            next();          // the code after next() is run, so it needs to be wrapped in an else statment;
         } else {
             res.sendStatus(404);
         }
@@ -156,9 +156,10 @@ issuesRouter.param('issueId',(req,res,next,issueId)=>{
 seriesRouter.delete('/:seriesId', checkIssue2,(req,res,next)=>{
     db.run(`DELETE FROM Series WHERE id = ${req.series.id}`, function(err){
         if(err){
-            next(err);
+            next(err);        // the code after next() is run, so it needs to be wrapped in an else statment;
         }else{
             res.sendStatus(204);
         }      
     })
 });
+
