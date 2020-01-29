@@ -12,11 +12,13 @@ artistsRouter.param(':artistId',(req,res,next,artistId)=>{
     db.get(`SELECT * FROM Artist WHERE id = $artistId`,{ $artistId: artistId },(err,row)=>{
         if(err){
             next(err);
-        }else if(!row){
+        }else if(row){
+            req.artist = row;
+            next();
+        }else{
             res.sendStatus(404);
         }
-        req.artist = row;
-        next();
+        
     })
 });
 
@@ -64,7 +66,7 @@ artistsRouter.put('/:artistId', checkArtist,(req,res,next)=>{
             if(err){
                 next(err);
             }
-            res.status(200).send( { artist: row });
+            res.status(200).send( { artist: row }); // res.status(200).json({artist:row}) can work as well
         })
     })
 });
