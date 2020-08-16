@@ -20,7 +20,7 @@ A full-stack **SERN** (SQL, [React](https://github.com/facebook/react),  [Expres
 * [Screenshots](#screenshots)
 * [Technologies](#technologies)
 * [Setup](#setup)
-* [Features](#features)
+* [API Features](#api-features)
 * [Status](#status)
 * [Inspiration](#inspiration)
 * [Contact](#contact)
