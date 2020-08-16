@@ -52,9 +52,9 @@ Image#3: Artists screen
 ## Technologies
 
 * [React](https://github.com/facebook/react) - version 15.6.1,
-* [Express](https://www.npmjs.com/package/express): -version 4.17.1,
-* [Sqlite3](https://www.npmjs.com/package/sqlite3) :  -version 4.1.1,
-* [Node](https://nodejs.org/en/): -version 12.16.1
+* [Express](https://www.npmjs.com/package/express) -version 4.17.1,
+* [Sqlite3](https://www.npmjs.com/package/sqlite3)  -version 4.1.1,
+* [Node](https://nodejs.org/en/) -version 12.16.1
 
 
 
