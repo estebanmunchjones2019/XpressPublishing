@@ -1,6 +1,6 @@
 # X-Press Publishing
 
-A full-stack **SERN** (SQL, [React](https://github.com/facebook/react),  [Express](https://www.npmjs.com/package/express), and [Node](https://nodejs.org/en/)) App that allows user to:
+A full-stack **SERN** (SQL, [Express](https://www.npmjs.com/package/express), [React](https://github.com/facebook/react) and [Node](https://nodejs.org/en/)) App that allows user to:
 - Create, view, and update artists
 - Create, view, update, and delete comic book series
 - Create, view, update, and delete issues of a specific comic book series
