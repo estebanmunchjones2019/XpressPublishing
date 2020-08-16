@@ -163,13 +163,19 @@ Image#3: Artist screen
   - If a series with the supplied series ID doesn't exist, returns a 404 response
   - If an issue with the supplied issue ID doesn't exist, returns a 404 response
 
+
+
 ## Status
 
 Project is _finished_. 
 
+
+
 ## Inspiration
 
 This project was based on [CodeCademy's Web Development career path](https://www.codecademy.com/learn/paths/web-development)
+
+
 
 ## Contact
 
