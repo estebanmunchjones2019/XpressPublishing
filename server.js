@@ -9,7 +9,7 @@ const app = express();
 const PORT = process.env.PORT || 4000;
 
 //it's important to follow a specific order of app.use
-app.use(express.static('./'));
+app.use(express.static('./')); //serves the /public folder content
 app.use(bodyParser.json());
 app.use(cors());
 app.use(morgan('dev'));
