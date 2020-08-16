@@ -11,7 +11,7 @@ A full-stack **SERN** (SQL, [React](https://github.com/facebook/react),  [Expres
    <source src="https://s3.amazonaws.com/codecademy-content/programs/build-apis/solution-videos/XPressPublishing480.mov" type="video/mp4">
  The markdown processor does not support the video tag.
 </video>
-The files coded by the author are: `/api/api.js`, `/api/artists.js`, `/api/issues.js` and `./migration.js`; basically, all the API endpoints, which interact with the database. The rest of the code was NOT coded by the author.
+The files coded by the author are: `./api/api.js`, `./api/artists.js`, `./api/issues.js` and `./migration.js`; basically, all the API endpoints, which interact with the database. The rest of the code was NOT coded by the author.
 
 
 ## Table of contents
