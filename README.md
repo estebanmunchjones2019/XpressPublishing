@@ -5,7 +5,7 @@ A full-stack **SERN** (SQL, [React](https://github.com/facebook/react),  [Expres
 - Create, view, update, and delete comic book series
 - Create, view, update, and delete issues of a specific comic book series
 
- You can view all of this functionality in action in this video: https://s3.amazonaws.com/codecademy-content/programs/build-apis/solution-videos/XPressPublishing480.mov.
+To view all of this functionality in action, you can download and watch [this video]( https://s3.amazonaws.com/codecademy-content/programs/build-apis/solution-videos/XPressPublishing480.mov).
 
 The files coded by the author are: `/api/api.js`, `/api/artists.js`, `/api/issues.js` and `migration.js`; basically, all the API endpoints, which interact with the database. The rest of the code was NOT coded by the author.
 
