@@ -7,7 +7,7 @@ A full-stack **SERN** (SQL, [Express](https://www.npmjs.com/package/express), [R
 
 To view all of this functionality in action, you can download and watch [this video]( https://s3.amazonaws.com/codecademy-content/programs/build-apis/solution-videos/XPressPublishing480.mov).
 
-The files coded by the author are: `/api/api.js`, `/api/artists.js`, `/api/issues.js` and `migration.js`; basically, all the API endpoints, which interact with the database. The rest of the code was NOT coded by the author.
+**The files coded by the author are: `/api/api.js`, `/api/artists.js`, `/api/issues.js` and `migration.js`**; basically, all the **API endpoints**, which interact with the database. **The remaining project files were NOT coded by the author.**
 
 
 ## Table of contents
@@ -74,7 +74,7 @@ Image#3: Artists screen
   node server
   ```
 
-* Now the app is served on https://localhost:4000
+* Now the app is served on https://localhost:4000.
 
 * If you want to **pre-populate the database** with some dummy data, run `seed.js` file:
 
