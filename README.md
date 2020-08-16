@@ -47,7 +47,7 @@ Image#2:  Series screen
 
 
 
-Image#3: Artist screen
+Image#3: Artists screen
 
 ![home-screen](images/image03.png)
 
